@@ -1,0 +1,28 @@
+﻿on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get user input
+        uses: dawidd6/action-http-request@v1
+        with:
+          url: https://trebuchet-19.github.io/test
+          method: GET
+          response-format: text
+
+      - name: Generate dynamic file
+        run: |
+          echo "$USER_INPUT" > dynamic_file.txt
+
+      - name: Commit and push changes
+        run: |
+          git add dynamic_file.txt
+          git commit -m "Generated dynamic file"
+          git push
