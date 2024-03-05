@@ -13,7 +13,7 @@ jobs:
       - name: Get user input
         uses: dawidd6/action-http-request@v1
         with:
-          url: https://trebuchet-19.github.io/test
+          url: https://trebuchet-19.github.io/tests
           method: GET
           response-format: text
 
